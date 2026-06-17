@@ -5,6 +5,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Linking,
+  Share,
   Animated,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -12,6 +13,14 @@ import Ionicons from '@react-native-vector-icons/ionicons';
 import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { styles } from './ContactScreen.styles';
 import { cvData } from '../data/cvData';
+
+const openURL = async (url: string, fallbackText?: string) => {
+  try {
+    await Linking.openURL(url);
+  } catch {
+    Share.share({ message: fallbackText || url });
+  }
+};
 
 type IoniconName = React.ComponentProps<typeof Ionicons>['name'];
 
@@ -83,11 +92,11 @@ export default function ContactScreen() {
   }, []);
 
   const contactItems: ContactItemProps[] = [
-    { icon: 'mail', label: 'Email', value: contact.email, color: Colors.primary, action: () => Linking.openURL(`mailto:${contact.email}`), index: 0 },
-    { icon: 'call', label: 'Teléfono', value: contact.phone, color: Colors.accentGreen, action: () => Linking.openURL(`tel:${contact.phone}`), index: 1 },
-    { icon: 'location', label: 'Ubicación', value: contact.location, color: Colors.accent, index: 2 },
-    { icon: 'logo-linkedin', label: 'LinkedIn', value: cvData.personal.linkedin, color: '#0A66C2', action: () => Linking.openURL(cvData.personal.linkedin), index: 3 },
-    { icon: 'logo-github', label: 'GitHub', value: cvData.personal.github, color: Colors.text, action: () => Linking.openURL(cvData.personal.github), index: 4 },
+    { icon: 'mail', label: 'Email', value: contact.email, color: Colors.primary, action: () => openURL(`mailto:${contact.email}`, contact.email), index: 0 },
+    { icon: 'call', label: 'Teléfono', value: contact.phone, color: Colors.accentGreen, action: () => openURL(`tel:${contact.phone}`, contact.phone), index: 1 },
+    { icon: 'location', label: 'Ubicación', value: contact.location, color: Colors.accent, action: () => openURL(`maps:?q=${encodeURIComponent(contact.location)}`, contact.location), index: 2 },
+    { icon: 'logo-linkedin', label: 'LinkedIn', value: cvData.personal.linkedin, color: '#0A66C2', action: () => openURL(cvData.personal.linkedin), index: 3 },
+    { icon: 'logo-github', label: 'GitHub', value: cvData.personal.github, color: Colors.text, action: () => openURL(cvData.personal.github), index: 4 },
   ];
 
   return (
