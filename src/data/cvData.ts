@@ -6,7 +6,7 @@ export const cvData = {
     email: 'alexisglez78@gmail.com',
     phone: '+52 5574518872',
     location: 'Nicolás Romero, Estado de México',
-    linkedin: 'https://www.linkedin.com/in/alexisglez78',
+    linkedin: 'https://www.linkedin.com/in/paul-alexis-gonz%C3%A1lez-casas-6a6502199',
     github: 'https://github.com/alexisglez78',
     bio: 'Desarrollador con más de 5 años creando software y páginas web responsivas en diferentes lenguajes. Metodologías ágiles SCRUM y DEVOPS. Especialista en React Native, Angular y ecosistema JavaScript.',
     avatar: require('../assets/foto-paul.jpg'),
