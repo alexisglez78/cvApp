@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   accentBar: {
-    width: 4,
+    width: 6,
     alignSelf: 'stretch',
   },
   content: {
@@ -49,10 +49,11 @@ export const styles = StyleSheet.create({
     borderRadius: Radius.full,
     paddingHorizontal: 10,
     paddingVertical: 4,
+    borderWidth: 1,
   },
   highlightText: {
     fontSize: Fonts.sizes.xs,
-    fontWeight: '600',
+    fontWeight: '700',
   },
   techRow: {
     flexDirection: 'row',
@@ -68,7 +69,8 @@ export const styles = StyleSheet.create({
     borderColor: Colors.border,
   },
   techText: {
-    color: Colors.textMuted,
+    color: Colors.textSecondary,
     fontSize: Fonts.sizes.xs,
+    fontWeight: '500',
   },
 });

@@ -20,11 +20,11 @@ export const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: Radius.md,
-    backgroundColor: Colors.primary + '20',
+    backgroundColor: Colors.primary + '30',
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: Colors.primary + '40',
+    borderColor: Colors.primary + '60',
   },
   headerTitle: {
     fontSize: Fonts.sizes.xxl,
@@ -33,7 +33,8 @@ export const styles = StyleSheet.create({
   },
   headerSub: {
     fontSize: Fonts.sizes.sm,
-    color: Colors.textMuted,
+    color: Colors.primaryLight,
     marginTop: 2,
+    fontWeight: '600',
   },
 });

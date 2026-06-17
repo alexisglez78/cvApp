@@ -10,6 +10,7 @@ import {
   Image,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import Ionicons from '@react-native-vector-icons/ionicons';
 import { Colors, Spacing, Radius, Fonts } from '../theme';
 import { styles } from './HomeScreen.styles';
 import { cvData } from '../data/cvData';
@@ -17,14 +18,18 @@ import { cvData } from '../data/cvData';
 const { width } = Dimensions.get('window');
 const { personal } = cvData;
 
+type IoniconName = React.ComponentProps<typeof Ionicons>['name'];
+
 const InfoItem = ({
   icon,
   text,
   index,
+  color,
 }: {
-  icon: string;
+  icon: IoniconName;
   text: string;
   index: number;
+  color: string;
 }) => {
   const opacity = React.useRef(new Animated.Value(0)).current;
   const translateX = React.useRef(new Animated.Value(-20)).current;
@@ -38,8 +43,8 @@ const InfoItem = ({
   }, []);
 
   return (
-    <Animated.View style={[styles.infoItem, { opacity, transform: [{ translateX }] }]}>
-      <Text style={styles.infoIcon}>{icon}</Text>
+    <Animated.View style={[styles.infoItem, { opacity, transform: [{ translateX }], borderLeftColor: color }]}>
+      <Ionicons name={icon} size={18} color={color} style={styles.infoIcon} />
       <Text style={styles.infoText}>{text}</Text>
     </Animated.View>
   );
@@ -100,10 +105,11 @@ export default function HomeScreen() {
   }, []);
 
   return (
-    <ScrollView
-      style={[styles.container, { paddingTop: insets.top }]}
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={styles.scrollContent}>
+    <View style={[styles.container, { paddingTop: insets.top }]}>
+      <ScrollView
+        style={{ flex: 1 }}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContent}>
       {/* Avatar */}
       <Animated.View
         style={[styles.avatarContainer, { opacity: avatarOpacity, transform: [{ scale: avatarScale }] }]}>
@@ -143,27 +149,28 @@ export default function HomeScreen() {
 
       {/* Info items */}
       <View style={styles.infoList}>
-        <InfoItem icon="📧" text={personal.email} index={0} />
-        <InfoItem icon="📱" text={personal.phone} index={1} />
-        <InfoItem icon="📍" text={personal.location} index={2} />
-        <InfoItem icon="💼" text={personal.linkedin} index={3} />
-        <InfoItem icon="🐙" text={personal.github} index={4} />
+        <InfoItem icon="mail-outline"     text={personal.email}    index={0} color={Colors.primary} />
+        <InfoItem icon="call-outline"     text={personal.phone}    index={1} color={Colors.accentGreen} />
+        <InfoItem icon="location-outline" text={personal.location} index={2} color={Colors.accent} />
+        <InfoItem icon="logo-linkedin"    text={personal.linkedin} index={3} color="#0A66C2" />
+        <InfoItem icon="logo-github"      text={personal.github}   index={4} color={Colors.textSecondary} />
       </View>
 
       {/* Stats row */}
       <Animated.View
         style={[styles.statsRow, { opacity: statsOpacity, transform: [{ translateY: statsY }] }]}>
         {[
-          { value: '8+', label: 'Años exp.' },
-          { value: '20+', label: 'Proyectos' },
-          { value: '2M+', label: 'Usuarios' },
+          { value: '8+', label: 'Años exp.', color: Colors.primary },
+          { value: '20+', label: 'Proyectos', color: Colors.accentGreen },
+          { value: '2M+', label: 'Usuarios', color: Colors.accent },
         ].map((stat, i) => (
-          <View key={i} style={styles.stat}>
-            <Text style={styles.statValue}>{stat.value}</Text>
+          <View key={i} style={[styles.stat, { borderTopColor: stat.color }]}>
+            <Text style={[styles.statValue, { color: stat.color }]}>{stat.value}</Text>
             <Text style={styles.statLabel}>{stat.label}</Text>
           </View>
         ))}
       </Animated.View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }

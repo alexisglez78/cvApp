@@ -7,17 +7,18 @@ import { Colors, Spacing, Fonts, Radius } from '../theme';
 import { styles } from './SkillsScreen.styles';
 import { cvData } from '../data/cvData';
 
-const CATEGORIES = ['Mobile', 'Language', 'Web', 'Backend', 'API', 'Cloud', 'DevOps', 'Database'];
+const CATEGORIES = ['Mobile', 'Lenguaje', 'Web', 'CSS', 'Backend', 'API', 'Cloud', 'DevOps', 'Base de datos'];
 
 const CATEGORY_ICONS: Record<string, React.ComponentProps<typeof Ionicons>['name']> = {
   Mobile: 'phone-portrait-outline',
-  Language: 'code-slash-outline',
+  Lenguaje: 'code-slash-outline',
   Web: 'globe-outline',
   Backend: 'server-outline',
   API: 'swap-horizontal-outline',
   Cloud: 'cloud-outline',
   DevOps: 'git-branch-outline',
-  Database: 'cylinders-outline',
+  CSS: 'color-palette-outline',
+  'Base de datos': 'layers-outline',
 };
 
 export default function SkillsScreen() {
@@ -41,10 +42,11 @@ export default function SkillsScreen() {
   let globalIndex = 0;
 
   return (
-    <ScrollView
-      style={[styles.container, { paddingTop: insets.top }]}
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={styles.content}>
+    <View style={[styles.container, { paddingTop: insets.top }]}>
+      <ScrollView
+        style={{ flex: 1 }}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.content}>
       {/* Header */}
       <Animated.View style={[styles.header, { opacity: headerOpacity, transform: [{ translateY: headerY }] }]}>
         <View style={styles.headerIcon}>
@@ -74,6 +76,7 @@ export default function SkillsScreen() {
           })}
         </View>
       ))}
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }

@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
     borderRadius: Radius.lg,
     padding: Spacing.md,
     borderWidth: 1,
-    borderColor: Colors.border,
+    borderColor: Colors.primary + '30',
   },
   header: {
     flexDirection: 'row',
@@ -81,7 +81,7 @@ export const styles = StyleSheet.create({
   role: {
     color: Colors.primaryLight,
     fontSize: Fonts.sizes.sm,
-    fontWeight: '600',
+    fontWeight: '700',
     marginBottom: 4,
   },
   location: {
@@ -101,16 +101,16 @@ export const styles = StyleSheet.create({
     gap: 6,
   },
   tag: {
-    backgroundColor: Colors.surface,
+    backgroundColor: Colors.primary + '20',
     borderRadius: Radius.sm,
     paddingHorizontal: 8,
     paddingVertical: 3,
     borderWidth: 1,
-    borderColor: Colors.border,
+    borderColor: Colors.primary + '50',
   },
   tagText: {
-    color: Colors.textSecondary,
+    color: Colors.primaryLight,
     fontSize: Fonts.sizes.xs,
-    fontWeight: '500',
+    fontWeight: '600',
   },
 });

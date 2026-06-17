@@ -86,15 +86,16 @@ export default function ContactScreen() {
     { icon: 'mail', label: 'Email', value: contact.email, color: Colors.primary, action: () => Linking.openURL(`mailto:${contact.email}`), index: 0 },
     { icon: 'call', label: 'Teléfono', value: contact.phone, color: Colors.accentGreen, action: () => Linking.openURL(`tel:${contact.phone}`), index: 1 },
     { icon: 'location', label: 'Ubicación', value: contact.location, color: Colors.accent, index: 2 },
-    { icon: 'logo-linkedin', label: 'LinkedIn', value: cvData.personal.linkedin, color: '#0A66C2', action: () => Linking.openURL(`https://${cvData.personal.linkedin}`), index: 3 },
-    { icon: 'logo-github', label: 'GitHub', value: cvData.personal.github, color: Colors.text, action: () => Linking.openURL(`https://${cvData.personal.github}`), index: 4 },
+    { icon: 'logo-linkedin', label: 'LinkedIn', value: cvData.personal.linkedin, color: '#0A66C2', action: () => Linking.openURL(cvData.personal.linkedin), index: 3 },
+    { icon: 'logo-github', label: 'GitHub', value: cvData.personal.github, color: Colors.text, action: () => Linking.openURL(cvData.personal.github), index: 4 },
   ];
 
   return (
-    <ScrollView
-      style={[styles.container, { paddingTop: insets.top }]}
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={styles.content}>
+    <View style={[styles.container, { paddingTop: insets.top }]}>
+      <ScrollView
+        style={{ flex: 1 }}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.content}>
       <Animated.View style={[styles.header, { opacity: headerOpacity, transform: [{ translateY: headerY }] }]}>
         <View style={styles.headerIcon}>
           <Ionicons name="mail" size={22} color={Colors.primary} />
@@ -118,6 +119,7 @@ export default function ContactScreen() {
           <ContactItem key={item.label} {...item} />
         ))}
       </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }

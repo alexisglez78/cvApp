@@ -65,7 +65,7 @@ export default function ProjectCard({
         {/* Highlights */}
         <View style={styles.highlights}>
           {highlights.map(h => (
-            <View key={h} style={[styles.highlight, { backgroundColor: color + '15' }]}>
+            <View key={h} style={[styles.highlight, { backgroundColor: color + '18', borderColor: color + '50' }]}>
               <Text style={[styles.highlightText, { color }]}>✦ {h}</Text>
             </View>
           ))}
@@ -74,8 +74,8 @@ export default function ProjectCard({
         {/* Tech stack */}
         <View style={styles.techRow}>
           {tech.map(t => (
-            <View key={t} style={styles.techBadge}>
-              <Text style={styles.techText}>{t}</Text>
+            <View key={t} style={[styles.techBadge, { borderColor: color + '40', backgroundColor: color + '12' }]}>
+              <Text style={[styles.techText, { color: color }]}>{t}</Text>
             </View>
           ))}
         </View>

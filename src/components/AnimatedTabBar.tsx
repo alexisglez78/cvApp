@@ -30,7 +30,7 @@ const TAB_ICONS: Record<string, { active: IoniconName; inactive: IoniconName }> 
 
 const TAB_LABELS: Record<string, string> = {
   Home: 'Perfil',
-  Experience: 'Experiencia',
+  Experience: 'Exp.',
   Skills: 'Skills',
   Projects: 'Proyectos',
   Contact: 'Contacto',

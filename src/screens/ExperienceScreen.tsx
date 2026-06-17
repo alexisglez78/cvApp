@@ -20,10 +20,11 @@ export default function ExperienceScreen() {
   }, []);
 
   return (
-    <ScrollView
-      style={[styles.container, { paddingTop: insets.top }]}
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={styles.content}>
+    <View style={[styles.container, { paddingTop: insets.top }]}>
+      <ScrollView
+        style={{ flex: 1 }}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.content}>
       {/* Header */}
       <Animated.View style={[styles.header, { opacity: headerOpacity, transform: [{ translateY: headerY }] }]}>
         <View style={styles.headerIcon}>
@@ -41,7 +42,8 @@ export default function ExperienceScreen() {
           <ExperienceCard key={exp.id} {...exp} index={i} />
         ))}
       </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
 

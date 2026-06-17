@@ -19,7 +19,7 @@ export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
-        <StatusBar barStyle="light-content" backgroundColor={Colors.background} />
+        <StatusBar barStyle="dark-content" backgroundColor={Colors.background} />
         <NavigationContainer>
           <Tab.Navigator
             tabBar={props => <AnimatedTabBar {...props} />}

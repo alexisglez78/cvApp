@@ -14,24 +14,24 @@ export const styles = StyleSheet.create({
   nameRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-  },
-  categoryDot: {
-    width: 7,
-    height: 7,
-    borderRadius: Radius.full,
+    flex: 1,
   },
   name: {
     color: Colors.text,
     fontSize: Fonts.sizes.md,
-    fontWeight: '500',
+    fontWeight: '600',
+  },
+  levelRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
   },
   level: {
     fontSize: Fonts.sizes.sm,
-    fontWeight: '700',
+    fontWeight: '800',
   },
   track: {
-    height: 6,
+    height: 8,
     backgroundColor: Colors.border,
     borderRadius: Radius.full,
     overflow: 'hidden',

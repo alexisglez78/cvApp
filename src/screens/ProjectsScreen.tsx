@@ -20,10 +20,11 @@ export default function ProjectsScreen() {
   }, []);
 
   return (
-    <ScrollView
-      style={[styles.container, { paddingTop: insets.top }]}
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={styles.content}>
+    <View style={[styles.container, { paddingTop: insets.top }]}>
+      <ScrollView
+        style={{ flex: 1 }}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.content}>
       {/* Header */}
       <Animated.View style={[styles.header, { opacity: headerOpacity, transform: [{ translateY: headerY }] }]}>
         <View style={styles.headerIcon}>
@@ -38,6 +39,7 @@ export default function ProjectsScreen() {
       {cvData.projects.map((project, i) => (
         <ProjectCard key={project.id} {...project} index={i} />
       ))}
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
